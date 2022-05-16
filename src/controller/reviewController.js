@@ -136,11 +136,11 @@ const updateReviewDetails = async (req, res) => {
                 res.status(200).send({ status: true, message: "Successfully updated review details.", data: changeDetails })
             }
             else {
-                return res.status(400).send({ status: false, message: "Review is deleted." })
+                return res.status(404).send({ status: false, message: "Review is deleted." })
             }
         }
         else {
-            return res.status(400).send({ status: false, message: "Book is deleted." })
+            return res.status(404).send({ status: false, message: "Book is deleted." })
         }
     } catch (err) {
         return res.status(500).send({ status: false, Error: err.message })

@@ -143,7 +143,9 @@ const getBooksById = async function (req, res) {
 
          
         let bookDataWithReviews = JSON.parse(JSON.stringify(findBookId))
+        
         bookDataWithReviews.reviewData = reviewData
+        
         return res.status(200).send({ status: true, message: "All books", data: bookDataWithReviews });
     } catch (err) {
         return res.status(500).send({ status: false, Error: err.message });
@@ -227,7 +229,7 @@ const deleteBooks = async function (req, res) {
 
     let id = req.params.bookId
 
-    if (!isValidObjectId(id)) {
+    if (!validator.isValidObjectId(id)) {
         return res.status(400).send({ status: false, message: 'Please provide valid objectID' })
     }
 
